@@ -4,7 +4,7 @@ services:
     ports:
       - "6006:6006"
     environment:
-      - COMMANDLINE_ARGS="--port 6006 --listen --precision full --no-half --share --api --cuda-stream --cuda-malloc"
+      - COMMANDLINE_ARGS=--port 6006 --listen --precision full --no-half --share --api --cuda-stream --cuda-malloc
     deploy:
       resources:
         reservations:

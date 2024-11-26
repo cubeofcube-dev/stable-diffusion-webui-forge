@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.10-slim 
 
 WORKDIR /app
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -15,6 +15,7 @@ RUN pip install torch==2.3.1 torchvision==0.18.1 --extra-index-url https://downl
     && pip install -r requirements_versions.txt
 COPY . .
 RUN python3 prepare_environment.py --skip-torch-cuda-test \
+    && find . -name requirements.txt -exec pip install -r {} \; \
     && pip uninstall -y opencv-python \
     && pip install opencv-python-headless>=4.8.0 \
     && pip install bitsandbytes==0.43.3
